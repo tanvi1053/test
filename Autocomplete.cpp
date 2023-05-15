@@ -9,7 +9,7 @@ Autocomplete::~Autocomplete() {}
 void Autocomplete::insert(string word) {
   TrieNode* curr = root;
 
-  for (int i = 0; i < word.length(); ++i) {
+  for (size_t i = 0; i < word.length(); ++i) {
     char indivLetter = word[i];
     int index = indivLetter - 'a';
 
@@ -27,7 +27,7 @@ vector<string> Autocomplete::getSuggestions(string partialWord) {
   vector<string> vectorOfSuggestions;
   TrieNode* curr = root;
 
-  for (int i = 0; i < partialWord.length(); ++i) {
+  for (size_t i = 0; i < partialWord.length(); ++i) {
     char indivLetter = partialWord[i];
     int index = indivLetter - 'a';
 
@@ -48,7 +48,7 @@ void Autocomplete::helper(TrieNode* indivLetterNode, string partialWord, vector<
     vectorOfSuggestions.push_back(partialWord);
   }
 
-  for (int i = 0; i < 26; i++) {
+  for (size_t i = 0; i < 26; i++) {
     if (indivLetterNode->children[i] != nullptr) {
       char newLetter = 'a' + i;
       helper(indivLetterNode->children[i], partialWord + newLetter, vectorOfSuggestions);
