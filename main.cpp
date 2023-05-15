@@ -162,49 +162,65 @@
 // }
 
 
-#include "Autocomplete.h"
+// #include "Autocomplete.h"
+// #include <iostream>
+
+// int main() {
+//     Autocomplete autocomplete;
+
+//     // Insert some words into the autocomplete dictionary
+//     autocomplete.insert("ant");
+//     autocomplete.insert("ants");
+//     autocomplete.insert("anti");
+//     autocomplete.insert("align");
+
+//     // Get suggestions for different partial words
+//     std::vector<std::string> suggestions;
+
+//     suggestions = autocomplete.getSuggestions("a");
+//     std::cout << "Suggestions for 'a': ";
+//     for (const auto& suggestion : suggestions) {
+//         std::cout << suggestion << " ";
+//     }
+//     std::cout << std::endl;
+
+//     suggestions = autocomplete.getSuggestions("an");
+//     std::cout << "Suggestions for 'an': ";
+//     for (const auto& suggestion : suggestions) {
+//         std::cout << suggestion << " ";
+//     }
+//     std::cout << std::endl;
+
+//     suggestions = autocomplete.getSuggestions("al");
+//     std::cout << "Suggestions for 'al': ";
+//     for (const auto& suggestion : suggestions) {
+//         std::cout << suggestion << " ";
+//     }
+//     std::cout << std::endl;
+
+//     suggestions = autocomplete.getSuggestions("ant");
+//     std::cout << "Suggestions for 'ant': ";
+//     for (const auto& suggestion : suggestions) {
+//         std::cout << suggestion << " ";
+//     }
+//     std::cout << std::endl;
+
+//     return 0;
+// }
+
 #include <iostream>
+#include "PrefixMatcher.h"
 
 int main() {
-    Autocomplete autocomplete;
+  PrefixMatcher matcher;
 
-    // Insert some words into the autocomplete dictionary
-    autocomplete.insert("ant");
-    autocomplete.insert("ants");
-    autocomplete.insert("anti");
-    autocomplete.insert("align");
+  matcher.insert("110011011101", 1);
+  matcher.insert("110011011", 2);
+  matcher.insert("11001101", 3);
 
-    // Get suggestions for different partial words
-    std::vector<std::string> suggestions;
+  std::string destinationAddress = "11001101110";
+  int selectedRouter = matcher.selectRouter(destinationAddress);
+  std::cout << "router: " << selectedRouter << std::endl;
 
-    suggestions = autocomplete.getSuggestions("a");
-    std::cout << "Suggestions for 'a': ";
-    for (const auto& suggestion : suggestions) {
-        std::cout << suggestion << " ";
-    }
-    std::cout << std::endl;
-
-    suggestions = autocomplete.getSuggestions("an");
-    std::cout << "Suggestions for 'an': ";
-    for (const auto& suggestion : suggestions) {
-        std::cout << suggestion << " ";
-    }
-    std::cout << std::endl;
-
-    suggestions = autocomplete.getSuggestions("al");
-    std::cout << "Suggestions for 'al': ";
-    for (const auto& suggestion : suggestions) {
-        std::cout << suggestion << " ";
-    }
-    std::cout << std::endl;
-
-    suggestions = autocomplete.getSuggestions("ant");
-    std::cout << "Suggestions for 'ant': ";
-    for (const auto& suggestion : suggestions) {
-        std::cout << suggestion << " ";
-    }
-    std::cout << std::endl;
-
-    return 0;
+  return 0;
 }
-
